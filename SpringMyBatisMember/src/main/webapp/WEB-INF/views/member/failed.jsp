@@ -94,7 +94,7 @@
     <p>${message}<br>다시 시도해 주시기 바랍니다.</p>
 
     <a href="/member/insertForm" class="btn-list">New Board Insert</a>
-    <a href="/member/memberlist" class="btn-list">View Board List</a>
+    <a href="/member/memberList" class="btn-list">View Board List</a>
 
 </div>
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -174,40 +175,57 @@ textarea {
 	<div class="write-container">
 		<div class="header">
 			<h1>
-				T1 COMMUNITY<br><span>${board.writer}님의 게시판 수정</span>
+				<span>${member.name}님의 회원정보 수정</span>
 			</h1>
 		</div>
+		<form:form modelAttribute="member" action="/member/update"
+			method="post">
+			<div class="form-group">
+				<label for="no">회원번호</label> <input type="text" id="no" name="no"
+					value="${member.no}" readonly>
+			</div>
+			<div class="form-group">
+				<label for="id">아이디</label> <input type="text" id="id" name="id"
+					value="${member.id}" readonly>
+			</div>
+			<div class="form-group">
+				<label for="name">작성자</label> <input type="text" id="name"
+					name="name" value="${member.name}" required>
+			</div>
+			<div class="form-group">
+				<label for="pw">비밀번호</label> <input type="password" id="pw"
+					name="pw" value="${member.pw}" required>
+			</div>
 
-		<form action="/board/update" method="post">
-			<div class="form-group">
-				<label for="no">작성자 번호</label> <input type="text"
-					id="no" name="no" value="${board.no}" readonly>
-			</div>
-			<div class="form-group">
-				<label for="writer">작성자(Writer)</label> <input type="text"
-					id="writer" name="writer" value="${board.writer}" required>
-			</div>
 
-			<div class="form-group">
-				<label for="title">제목(Title)</label> <input type="text" id="title"
-					name="title" value="${board.title}" required>
-			</div>
+			<form:select path="authList[0].auth" disabled="disabled">
+				<form:option value="" label="=== 선택해 주세요 ===" />
+				<form:option value="ROLE_USER" label="사용자" />
+				<form:option value="ROLE_MEMBER" label="회원" />
+				<form:option value="ROLE_ADMIN" label="관리자" />
+			</form:select>
+			<form:select path="authList[1].auth" disabled="disabled">
+				<form:option value="" label="=== 선택해 주세요 ===" />
+				<form:option value="ROLE_USER" label="사용자" />
+				<form:option value="ROLE_MEMBER" label="회원" />
+				<form:option value="ROLE_ADMIN" label="관리자" />
+			</form:select>
+			<form:select path="authList[2].auth" disabled="disabled">
+				<form:option value="" label="=== 선택해 주세요 ===" />
+				<form:option value="ROLE_USER" label="사용자" />
+				<form:option value="ROLE_MEMBER" label="회원" />
+				<form:option value="ROLE_ADMIN" label="관리자" />
+			</form:select>
 
-			<div class="form-group">
-				<label for="content">내용(Content)</label>
-				<textarea id="content" name="content">${board.content}</textarea>
-			</div>
 
 			<div class="btn-area">
-				<a href="/board/boardlist" class="btn-list">게시판 목록</a>
-				<button type="submit" class="btn btn-submit">게시판 수정</button>
-				<button type="reset" class="btn btn-reset">수정 취소</button>
-			</div>
-		</form>
+				<a href="/member/memberList" class="btn-list">회원목록</a>
+				<button type="submit" class="btn btn-submit">회원정보 수정</button>
+				<button type="reset" class="btn btn-reset">회원정보 수정 취소</button>
 
-		<div class="bottom-deco">[ SYSTEM: READY TO TRANSMIT DATA TO
-			JDBCBOARD ]</div>
-	</div>
+
+			</div>
+		</form:form>
 
 </body>
 </html>
