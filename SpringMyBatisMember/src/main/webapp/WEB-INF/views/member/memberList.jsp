@@ -181,6 +181,18 @@
         <a href="/member/memberlist" class="btn-write">List View</a>
         <a href="/member/insertForm" class="btn-write">New Mission</a>
     </div>
+    
+    <div class="search-container">
+        <form action="/member/search" method="get" class="search-form">
+            <select name="searchType" class="search-select">
+                <option value="title">ID</option>
+                <option value="writer">NAME</option>
+            </select>
+            <input type="text" name="keyword" class="search-input" placeholder="Search mission...">
+            <button type="submit" class="btn-search">SEARCH</button>
+        </form>
+    </div>
+    
 </div>
 
     <div class="search-container">
